@@ -90,6 +90,7 @@
   font-size: 32px;
   transition: all;
   transition-duration: 0.9s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #item1{
@@ -134,7 +135,7 @@
     width:350px;
   }
   .box{
-    font-size: 20px;
+    font-size: 22px;
     height: 75px;
     line-height: 75px;
   }
