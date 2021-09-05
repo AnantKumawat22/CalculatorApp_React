@@ -54,7 +54,7 @@
 }
 
 .grid_div{
-  width: 400px;
+  width: 100%;
   height: auto;
   border-radius: 7px;
   font-family: "Questrial", sans-serif;
@@ -127,4 +127,18 @@
 .operand:hover{
   background-color: rgb(0, 0, 0);
   color: white;
+}
+
+@media(max-width:560px){
+  .center_div{
+    width:350px;
+  }
+  .box{
+    font-size: 20px;
+    height: 75px;
+    line-height: 75px;
+  }
+  .container{
+    background-size: 400% 100%;
+  }
 }
