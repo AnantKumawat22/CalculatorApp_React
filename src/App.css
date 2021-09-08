@@ -141,7 +141,7 @@
     line-height: 75px;
   }
   .container{
-    height: 89vh;
+    /* height: 89vh; */
     background-size: 400% 100%;
   }
 }
