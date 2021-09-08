@@ -133,6 +133,7 @@
 @media(max-width:560px){
   .center_div{
     width:350px;
+    margin: 20px auto;
   }
   .box{
     font-size: 22px;
