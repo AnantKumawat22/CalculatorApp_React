@@ -26,6 +26,16 @@ function App() {
     setInput(x);
   }
 
+  const gridclick = () => {
+    var divElements = document.getElementsByClassName('grid_div');
+
+    for (var i = 2; i < divElements.length; i++) {
+      divElements[i].addEventListener('click', function () {
+        setInput(divElements[i].innerText);
+      });
+    };
+  }
+
   // function Add(x, y){
   //   return(x + y);
   // }
@@ -39,7 +49,7 @@ function App() {
       <div className="container">
         <div className="center_div">
           <input type="text" onChange={inputChange} value={input} id="num" />
-          <div className="grid_div">
+          <div className="grid_div" onClick={gridclick}>
 
             <div className="box" id="item1" onClick={allClear}>AC</div>
             <div className="box" id="item2" onClick={backspace}><i className="fas fa-backspace"></i></div>
