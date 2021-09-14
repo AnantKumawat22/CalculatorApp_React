@@ -53,7 +53,7 @@
   margin: 66px auto;
 }
 
-.grid_div{
+#grid_div{
   width: 100%;
   height: auto;
   border-radius: 7px;
@@ -119,10 +119,6 @@
   grid-column-end: 5;
   background-color: #4BB543;
   color: white;
-}
-
-.operator{
-  background-color: #c5c5c5;
 }
 
 .box:active{

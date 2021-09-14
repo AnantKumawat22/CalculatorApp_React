@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { useState } from 'react';
+import CalcArray from './CalcArray';
 
 function App() {
-
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState("");
 
   function allClear() {
-    setInput(0);
+    setInput("");
   }
 
   function backspace() {
     if (input.length >= 0) {
       var newStr = input.substring(0, input.length - 1);
       if (newStr == "") {
-        setInput(0);
+        setInput("");
         return;
       }
       setInput(newStr);
@@ -26,20 +26,25 @@ function App() {
     setInput(x);
   }
 
-  const gridclick = () => {
-    var divElements = document.getElementsByClassName('grid_div');
-
-    for (var i = 2; i < divElements.length; i++) {
-      divElements[i].addEventListener('click', function () {
-        setInput(divElements[i].innerText);
-      });
-    };
+  const gridclick = (e) => {
+    let str = input + e.target.innerText;
+    let cal = str.split(" ");
+    setInput(str);
   }
 
-  // function Add(x, y){
-  //   return(x + y);
-  // }
-
+  const result = () => {
+    let res;
+    try {
+      res = eval(input);
+    } catch (e) {
+      if (e instanceof SyntaxError) {
+        alert(e.message);
+      } else {
+        throw e;
+      }
+    }
+    setInput(res);
+  }
 
   return (
     <>
@@ -49,36 +54,19 @@ function App() {
       <div className="container">
         <div className="center_div">
           <input type="text" onChange={inputChange} value={input} id="num" />
-          <div className="grid_div" onClick={gridclick}>
+          <div id="grid_div">
 
             <div className="box" id="item1" onClick={allClear}>AC</div>
             <div className="box" id="item2" onClick={backspace}><i className="fas fa-backspace"></i></div>
-            <div className="box operator" id="item3">%</div>
 
-            <div className="box operator" id="item4">/</div>
-            <div className="box operand" id="item5">7</div>
-
-            <div className="box operand" id="item6">8</div>
-            <div className="box operand" id="item7">9</div>
-
-            <div className="box operator" id="item8">*</div>
-            <div className="box operand" id="item9">4</div>
-
-            <div className="box operand" id="item10">5</div>
-            <div className="box operand" id="item11">6</div>
-
-            <div className="box operator" id="item12">-</div>
-            <div className="box operand" id="item13">1</div>
-
-            <div className="box operand" id="item14">2</div>
-            <div className="box operand" id="item15">3</div>
-
-            <div className="box operator" id="item16">+</div>
-
-            <div className="box operand" id="item17" >0</div>
-            <div className="box operand" id="item18">.</div>
-
-            <div className="box b1" id="item19">=</div>
+            {CalcArray.map((val) => {
+              return (
+                <>
+                  <div className="box" key={val.id} onClick={gridclick}>{val.data}</div>
+                </>
+              );
+            })}
+            <div className="box b1" id="item19" onClick={result}>=</div>
           </div>
         </div>
       </div>
